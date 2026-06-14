@@ -2,7 +2,7 @@
 
 A self-contained, console-based Python script that performs unsupervised clustering on the classic Iris dataset. The project groups 150 Iris flowers into clusters using K-Means and hierarchical clustering, then evaluates how well those clusters match the real species labels.
 
-> **Reference:** This implementation follows the requirements outlined in [`System_overview.pdf`]([System_overview.pdf](System_overview.pdf)).
+> **Reference:** This implementation follows the requirements outlined in [System_overview.pdf](System_overview.pdf).
 
 ---
 

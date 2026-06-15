@@ -9,4 +9,5 @@ dependencies = [
     "scikit-learn",
     "scipy",
     "scipy-stubs~=1.17.1",
+    "pandas-stubs~=3.0.3",
 ]

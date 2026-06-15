@@ -174,15 +174,17 @@ def visualize(
     print("    \u2713 Saved kmeans_scatter.png")
 
     # Dendrogram with horizontal cut line at height yielding 3 clusters
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(14, 7))
     dendrogram(
         linkage_matrix,
         ax=ax,
         truncate_mode="lastp",
-        p=150,
-        leaf_rotation=90.0,
-        leaf_font_size=6.0,
+        p=30,
+        leaf_rotation=45.0,
+        leaf_font_size=12,
         show_leaf_counts=True,
+        color_threshold=0.7 * sorted(linkage_matrix[:, 2])[-1],
+        above_threshold_color="#888888",
     )
 
     # Determine the height that yields exactly 3 clusters
@@ -193,13 +195,14 @@ def visualize(
     # A horizontal cut at that height therefore yields 3 clusters.
     cut_height = sorted_heights[X.shape[0] - 4]
 
-    ax.axhline(y=cut_height, color="r", linestyle="--", label="cut for 3 clusters")
-    ax.set_title("Hierarchical Clustering Dendrogram (Ward)")
-    ax.set_xlabel("Sample index")
-    ax.set_ylabel("Distance")
-    ax.legend()
+    ax.axhline(y=cut_height, color="r", linestyle="--", linewidth=2, label="cut for 3 clusters")
+    ax.set_title("Hierarchical Clustering Dendrogram (Ward)", fontsize=18, fontweight="bold", pad=15)
+    ax.set_xlabel("Sample index (or cluster size)", fontsize=14, labelpad=10)
+    ax.set_ylabel("Distance (Ward linkage)", fontsize=14, labelpad=10)
+    ax.tick_params(axis="both", labelsize=12)
+    ax.legend(fontsize=12)
     plt.tight_layout()
-    plt.savefig("dendrogram.png", dpi=150)
+    plt.savefig("dendrogram.png", dpi=200)
     plt.close(fig)
     print("    \u2713 Saved dendrogram.png")
 
